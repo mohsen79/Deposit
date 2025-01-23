@@ -1,0 +1,28 @@
+.container,
+.selectedContainer {
+  background-color: #f8f8f8;
+  width: 90%;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 5px 10px;
+}
+
+.title {
+  color: #a9a8aa;
+  font-size: 14px;
+}
+
+.description {
+  color: #a9a8aa;
+  font-size: 12px;
+}
+
+.selectedContainer {
+  border: 1px solid #0564aa;
+}
+
+.selectedTitle {
+  color: #0564aa;
+}
