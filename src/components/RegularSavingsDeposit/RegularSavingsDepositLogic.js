@@ -5,20 +5,40 @@ const useStyle = createUseStyles({
     container: {
         padding: "16px",
     },
+    // (head)
+    head: {
+        width: "100%",
+        height: "42px",
+        marginBottom: "12px",
+    },
+    // title container
+    titleContainer: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        width: "100%",
+        height: "100%",
+    },
     titleHeading: {
         fontSize: "12px",
-        marginBottom: "20px",
         color: "#565656",
     },
-    costsContainer: {
+    // (info)
+    info: {
         width: "100%",
         height: "94px",
-        marginBottom: "20px",
+        marginBottom: "12px",
+    },
+    // costs container
+    costsContainer: {
+        width: "100%",
+        height: "100%",
         padding: "16px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "center",
+        gap: "10px",
         borderRadius: "6px",
         backgroundColor: "#F8F8F8",
     },
@@ -28,34 +48,47 @@ const useStyle = createUseStyles({
         alignItems: "center",
         justifyContent: "space-between",
     },
-    costsTypography: {
+    costTypography: {
         fontSize: "12px",
         color: "#989799",
     },
-    costsAmount: {
+    costAmount: {
         fontSize: "16px",
         fontWeight: "bold",
         color: "#1F99A7",
     },
-    selectProvince: {
+    // (body)
+    body: {
+        width: "100%",
+        height: "311px",
+        marginBottom: "53px",
+    },
+    // filter branches
+    filterBranches: {
+        width: "100%",
+        height: "77px",
+        marginBottom: "15px",
         display: "flex",
-        alignItems: "center",
-        gap: "10px",
-        marginBottom: "40px",
+        alignItems: "flex-start",
+        gap: "8px",
         "& .MuiSelect-icon": {
             display: "none !important",
         },
     },
+    // require fields
     requireFields: {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: "25px",
+        gap: "15px",
         marginBottom: "60px",
     },
     fieldWrapper: {
         position: "relative",
+        display: "flex",
+        alignItems: "flex-end",
         width: "100%",
+        height: "56px",
     },
     btn: {
         display: "flex",
@@ -74,16 +107,12 @@ const useStyle = createUseStyles({
     errorMessage: {
         position: "absolute",
         right: "10px",
+        bottom: "-20px",
         fontSize: "11px",
-        color: "#eb1520"
-    },
-    message: {
-        extend: "errorMessage",
-        color: "#989799"
+        color: "#eb1520",
     },
     inputWrapper: {
-        position: "relative",
-        width: "100%",
+        extend: "fieldWrapper",
     },
     textField: {
         extend: "btn",
@@ -98,23 +127,81 @@ const useStyle = createUseStyles({
         left: "10px",
         color: "#1F99A7",
     },
-    paymentContainer: {
+    message: {
+        extend: "errorMessage",
+        color: "#989799",
+    },
+    // (footer)
+    footer: {
         display: "flex",
         flexDirection: "column",
-        gap: "2px"
+        gap: "12px",
+        width: "100%",
+        height: "78px",
     },
-    checkboxWrapper: {
+    // card issuanace
+    cardIssuanceContainer: {
+        width: "100%",
+        height: "24px",
         display: "flex",
         alignItems: "center",
-        gap: "2px",
     },
     checkboxLabel: {
+        display: "block",
+        position: "relative",
+        paddingLeft: 35,
+        marginRight: 30,
+        cursor: "pointer",
+        fontSize: 14,
+        userSelect: "none",
         color: "#565656",
-        fontSize: "14px"
+        "&:hover $checkmark": {
+            backgroundColor: "#ccc",
+        },
     },
+    checkbox: {
+        position: "absolute",
+        opacity: 0,
+        cursor: "pointer",
+        height: 0,
+        width: 0,
+        "&:checked + $checkmark": {
+            backgroundColor: "#00bba7",
+            borderRadius: 2,
+        },
+        "&:checked + $checkmark:after": {
+            display: "block",
+        },
+    },
+    checkmark: {
+        position: "absolute",
+        top: 5,
+        right: -30,
+        height: 20,
+        width: 20,
+        backgroundColor: "#eee",
+        borderRadius: 2,
+        "&:after": {
+            content: '""',
+            position: "absolute",
+            display: "none",
+            left: 7,
+            top: 4,
+            width: 3,
+            height: 8,
+            border: "solid white",
+            borderWidth: "0 3px 3px 0",
+            transform: "rotate(45deg)",
+        },
+    },
+    // payment
     payment: {
-        width: "100%",
         height: "42px",
+        width: "100%",
+    },
+    paymentBtn: {
+        width: "100%",
+        height: "100%",
         justifyContent: "center",
         border: "none",
         borderRadius: "12px",
