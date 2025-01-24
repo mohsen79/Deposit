@@ -1,7 +1,6 @@
 .container,
 .selectedContainer {
   background-color: #f8f8f8;
-  width: 90%;
   border-radius: 12px;
   display: flex;
   flex-direction: column;

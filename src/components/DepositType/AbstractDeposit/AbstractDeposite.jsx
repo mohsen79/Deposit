@@ -1,6 +1,6 @@
 import styles from "./AbstractDeposit.module.css";
 
-export default function AbstractDeposit({ selected }) {
+export default function AbstractDeposit({ selected, title, description }) {
   return (
     <div
       className={
@@ -8,11 +8,9 @@ export default function AbstractDeposit({ selected }) {
       }
     >
       <div className={selected === true ? styles.selectedTitle : styles.title}>
-        سپرده قرض الحسنه عادی (دیجیتال)
+        {title}
       </div>
-      <div className={styles.description}>
-        حداقل مبلغ افتتاحیه 500،000 ریال است
-      </div>
+      <div className={styles.description}>{description}</div>
     </div>
   );
 }
