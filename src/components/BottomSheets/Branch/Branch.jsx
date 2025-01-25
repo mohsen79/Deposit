@@ -51,7 +51,7 @@ const useStyles = createUseStyles({
         "& .MuiInputBase-input": {
             padding: "12px",
         },
-        // height: "48px",
+        height: "48px",
     },
     formControl: {
         direction: "rtl",
@@ -59,8 +59,7 @@ const useStyles = createUseStyles({
     },
     radioGroup: {
         width: "100%",
-        height: "230px",
-        margin: "24px 0",
+        height: "216px",
         display: "flex",
         flexDirection: "column",
         flexWrap: "nowrap",
@@ -86,10 +85,10 @@ const useStyles = createUseStyles({
     },
     container: {
         height: "100%",
-        padding: "2rem 1rem",
+        padding: "30px 1rem",
         display: "flex",
         flexDirection: "column",
-        gap: "1rem",
+        gap: "24px",
         justifyContent: "space-between",
         alignItems: "center",
     },
@@ -141,7 +140,7 @@ export default function Branch(props) {
             <Global
                 styles={{
                     ".MuiDrawer-root > .MuiPaper-root": {
-                        height: "523px",
+                        // height: "523px",
                         overflow: "visible",
                     },
                 }}
