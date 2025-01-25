@@ -6,6 +6,7 @@ import Branch from "./components/BottomSheets/Branch/Branch";
 import RegularSavingsDeposit from "./components/RegularSavingsDeposit/RegularSavingsDeposit";
 import Withdraw from "./components/BottomSheets/Withdraw/Withdraw";
 import Payment from "./components/BottomSheets/Payment/Payment";
+import Dialogue from "./components/BottomSheets/Dialogue/Dialogue";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 />
                 <Route path="/withdraw" element={<Withdraw />} />
                 <Route path="/payment" element={<Payment />} />
+                <Route path="/dialogue" element={<Dialogue />} />
             </Routes>
         </BrowserRouter>
     );
