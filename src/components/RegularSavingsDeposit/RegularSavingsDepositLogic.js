@@ -32,7 +32,6 @@ const useStyle = createUseStyles({
     // costs container
     costsContainer: {
         width: "100%",
-        height: "100%",
         padding: "16px",
         display: "flex",
         flexDirection: "column",
@@ -44,6 +43,7 @@ const useStyle = createUseStyles({
     },
     costsSection: {
         width: "100%",
+        height: "26px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -81,7 +81,6 @@ const useStyle = createUseStyles({
         flexDirection: "column",
         alignItems: "center",
         gap: "15px",
-        marginBottom: "60px",
     },
     fieldWrapper: {
         position: "relative",
