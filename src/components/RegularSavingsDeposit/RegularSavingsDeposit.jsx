@@ -1,5 +1,7 @@
 import React from "react";
 import RegularSavingsDepositLogic from "./RegularSavingsDepositLogic";
+import blueRial from "../../assets/images/blue-rial.png";
+import grayRial from "../../assets/images/gray-rial.png";
 import { useLocation } from "react-router-dom";
 import {
     Typography,
@@ -7,6 +9,11 @@ import {
     MenuItem,
     FormControl,
     Select,
+    Box,
+    TextField,
+    Button,
+    FormControlLabel,
+    Checkbox,
 } from "@mui/material";
 
 const ConditionalView = ({ paths, children }) => {
@@ -16,13 +23,13 @@ const ConditionalView = ({ paths, children }) => {
 };
 
 const RegularSavingsDeposit = () => {
-    const { classes, selections } = RegularSavingsDepositLogic();
+    const { classes, selections, styles } = RegularSavingsDepositLogic();
     const mode = "one";
 
     return (
-        <div className={classes.container}>
-            <div className={classes.head}>
-                <section className={classes.titleContainer}>
+        <Box className={classes.container}>
+            <Box className={classes.head}>
+                <Box component="section" className={classes.titleContainer}>
                     <ConditionalView paths={["/saving-deposit"]}>
                         <Typography className={classes.titleHeading}>
                             سپرده قرض الحسنه پس انداز عادی (دیجیتال)
@@ -38,61 +45,60 @@ const RegularSavingsDeposit = () => {
                             سپرده سرمایه گذاری بلند مدت
                         </Typography>
                     </ConditionalView>
-                </section>
-            </div>
-            <div className={classes.info}>
-                <section className={classes.costsContainer}>
+                </Box>
+            </Box>
+            <Box className={classes.info}>
+                <Box component="section" className={classes.costsContainer}>
                     <ConditionalView
                         paths={["/saving-deposit", "/short-investment"]}
                     >
-                        <div className={classes.costsSection}>
+                        <Box className={classes.costsSection}>
                             <Typography className={classes.costTypography}>
                                 هزینه افتتاح حساب:
                             </Typography>
-                            <Typography className={classes.costAmount}>
-                                {1_000_000} ریال
-                            </Typography>
-                        </div>
-                        <div className={classes.costsSection}>
+                            <Box className={classes.amountWrapper}>
+                                <Typography className={classes.costAmount}>
+                                    {1_000_000}
+                                </Typography>
+                                <img src={grayRial} />
+                            </Box>
+                        </Box>
+                        <Box className={classes.costsSection}>
                             <Typography className={classes.costTypography}>
                                 هزینه صدور و ارسال کارت
                             </Typography>
-                            <Typography className={classes.costAmount}>
-                                {51_000} ریال
-                            </Typography>
-                        </div>
+                            <Box className={classes.amountWrapper}>
+                                <Typography className={classes.costAmount}>
+                                    {51_000}
+                                </Typography>
+                                <img src={grayRial} />
+                            </Box>
+                        </Box>
                     </ConditionalView>
                     <ConditionalView paths={["/long-investment"]}>
-                        <div className={classes.costsSection}>
+                        <Box className={classes.costsSection}>
                             <Typography className={classes.costTypography}>
                                 هزینه افتتاح حساب:
                             </Typography>
-                            <Typography className={classes.costAmount}>
-                                {1_000_000} ریال
-                            </Typography>
-                        </div>
+                            <Box className={classes.amountWrapper}>
+                                <Typography className={classes.costAmount}>
+                                    {1_000_000}
+                                </Typography>
+                                <img src={grayRial} />
+                            </Box>
+                        </Box>
                     </ConditionalView>
-                </section>
-            </div>
-            <div className={classes.body}>
-                <section className={classes.filterBranches}>
+                </Box>
+            </Box>
+            <Box className={classes.body}>
+                <Box component="section" className={classes.filterBranches}>
                     <ConditionalView paths={["/saving-deposit"]}>
                         {selections.map((selection, index) => {
                             return (
                                 <FormControl fullWidth key={index}>
                                     <InputLabel
                                         id={selection.id}
-                                        sx={{
-                                            textAlign: "right",
-                                            transformOrigin: "top right",
-                                            color: "#989799",
-                                            left: "unset",
-                                            right: 28,
-                                            "&.MuiInputLabel-shrink": {
-                                                color: "#989799",
-                                                transformOrigin: "top right",
-                                            },
-                                        }}
+                                        sx={styles.inputLabel}
                                     >
                                         {selection.label}
                                     </InputLabel>
@@ -102,28 +108,7 @@ const RegularSavingsDeposit = () => {
                                         value={selection.value}
                                         label={selection.label}
                                         onChange={selection.handleChange}
-                                        sx={{
-                                            "& .MuiOutlinedInput-notchedOutline":
-                                                {
-                                                    textAlign: "right",
-                                                    right: 0,
-                                                    borderColor: "#989799",
-                                                    borderRadius: "12px",
-                                                },
-                                            "&:hover .MuiOutlinedInput-notchedOutline":
-                                                {
-                                                    borderColor: "#989799",
-                                                },
-
-                                            "&.Mui-focused .MuiOutlinedInput-notchedOutline":
-                                                {
-                                                    borderColor: "#989799",
-                                                    borderWidth: "1px",
-                                                },
-                                            "& .MuiSelect-select": {
-                                                color: "#565656",
-                                            },
-                                        }}
+                                        sx={styles.select}
                                         MenuProps={{
                                             PaperProps: {
                                                 sx: {
@@ -151,167 +136,237 @@ const RegularSavingsDeposit = () => {
                     </ConditionalView>
                     <ConditionalView paths={["/short-investment"]}>
                         {mode === "one" ? (
-                            <div className={classes.inputWrapper}>
-                                <input
+                            <Box className={classes.inputWrapper}>
+                                <TextField
                                     type="text"
                                     size="small"
-                                    className={classes.textField}
+                                    sx={styles.textField}
                                     placeholder="مبلغ افتتاحیه"
                                 />
-                                <span className={classes.rial}>ریال</span>
-                                <span className={classes.message}>
+                                <img src={blueRial} className={classes.rial} />
+                                <Box
+                                    component="span"
+                                    className={classes.message}
+                                >
                                     حداقل مبلغ برای افتتاح حساب 1000000 ریال
                                     میباشد.
-                                </span>
-                            </div>
+                                </Box>
+                            </Box>
                         ) : (
-                            <div className={classes.fieldWrapper}>
-                                <button className={classes.btn}>
+                            <Box className={classes.fieldWrapper}>
+                                <Button
+                                    disableElevation
+                                    disableRipple
+                                    variant="text"
+                                    sx={styles.button}
+                                >
                                     سپرده واریز سود
-                                    <span></span>
-                                </button>
+                                    <Box component="span"></Box>
+                                </Button>
                                 {false && (
-                                    <span className={classes.errorMessage}>
+                                    <Box
+                                        component="span"
+                                        className={classes.errorMessage}
+                                    >
                                         پیام تستی
-                                    </span>
+                                    </Box>
                                 )}
-                            </div>
+                            </Box>
                         )}
                     </ConditionalView>
                     <ConditionalView paths={["/long-investment"]}>
-                        <div className={classes.inputWrapper}>
-                            <input
+                        <Box className={classes.inputWrapper}>
+                            <TextField
                                 type="text"
                                 size="small"
-                                className={classes.textField}
+                                sx={styles.textField}
                                 placeholder="مبلغ افتتاحیه"
                             />
-                            <span className={classes.rial}>ریال</span>
-                            <span className={classes.message}>
+                            <img src={blueRial} className={classes.rial} />
+                            <Box component="span" className={classes.message}>
                                 حداقل مبلغ برای افتتاح حساب 1000000 ریال میباشد.
-                            </span>
-                        </div>
+                            </Box>
+                        </Box>
                     </ConditionalView>
-                </section>
-                <section className={classes.requireFields}>
+                </Box>
+                <Box component="section" className={classes.requireFields}>
                     <ConditionalView paths={["/saving-deposit"]}>
-                        <div className={classes.fieldWrapper}>
-                            <button className={classes.btn}>
+                        <Box className={classes.fieldWrapper}>
+                            <Button
+                                disableElevation
+                                disableRipple
+                                variant="text"
+                                sx={styles.button}
+                            >
                                 شعبه افتتاح سپرده
-                                <span></span>
-                            </button>
+                                <Box component="span"></Box>
+                            </Button>
                             {false && (
-                                <span className={classes.errorMessage}>
+                                <Box
+                                    component="span"
+                                    className={classes.errorMessage}
+                                >
                                     پیام تستی
-                                </span>
+                                </Box>
                             )}
-                        </div>
+                        </Box>
                         {mode === "one" && (
                             <>
-                                <div className={classes.fieldWrapper}>
-                                    <button className={classes.btn}>
+                                <Box className={classes.fieldWrapper}>
+                                    <Button
+                                        disableElevation
+                                        disableRipple
+                                        variant="text"
+                                        sx={styles.button}
+                                        className={classes.btn}
+                                    >
                                         سپرده برداشت وجه
-                                        <span></span>
-                                    </button>
+                                        <Box component="span"></Box>
+                                    </Button>
                                     {false && (
-                                        <span className={classes.errorMessage}>
+                                        <Box
+                                            component="span"
+                                            className={classes.errorMessage}
+                                        >
                                             پیام تستی
-                                        </span>
+                                        </Box>
                                     )}
-                                </div>
-                                <div className={classes.inputWrapper}>
-                                    <input
+                                </Box>
+                                <Box className={classes.inputWrapper}>
+                                    <TextField
                                         type="text"
                                         size="small"
-                                        className={classes.textField}
+                                        sx={styles.textField}
                                         placeholder="مبلغ افتتاحیه"
                                     />
-                                    <span className={classes.rial}>ریال</span>
-                                    <span className={classes.message}>
+                                    <img
+                                        src={blueRial}
+                                        className={classes.rial}
+                                    />
+                                    <Box
+                                        component="span"
+                                        className={classes.message}
+                                    >
                                         حداقل مبلغ برای افتتاح حساب 1000000 ریال
                                         میباشد.
-                                    </span>
-                                </div>
+                                    </Box>
+                                </Box>
                             </>
                         )}
                     </ConditionalView>
                     <ConditionalView paths={["/short-investment"]}>
                         {mode === "one" && (
                             <>
-                                <div className={classes.fieldWrapper}>
-                                    <button className={classes.btn}>
+                                <Box className={classes.fieldWrapper}>
+                                    <Button
+                                        disableElevation
+                                        disableRipple
+                                        variant="text"
+                                        sx={styles.button}
+                                    >
                                         شعبه افتتاح سپرده
-                                        <span></span>
-                                    </button>
+                                        <Box component="span"></Box>
+                                    </Button>
                                     {false && (
-                                        <span className={classes.errorMessage}>
+                                        <Box
+                                            component="span"
+                                            className={classes.errorMessage}
+                                        >
                                             پیام تستی
-                                        </span>
+                                        </Box>
                                     )}
-                                </div>
-                                <div className={classes.fieldWrapper}>
-                                    <button className={classes.btn}>
+                                </Box>
+                                <Box className={classes.fieldWrapper}>
+                                    <Button
+                                        disableElevation
+                                        disableRipple
+                                        variant="text"
+                                        sx={styles.button}
+                                    >
                                         سپرده برداشت وجه
-                                        <span></span>
-                                    </button>
+                                        <Box component="span"></Box>
+                                    </Button>
                                     {false && (
-                                        <span className={classes.errorMessage}>
+                                        <Box
+                                            component="span"
+                                            className={classes.errorMessage}
+                                        >
                                             پیام تستی
-                                        </span>
+                                        </Box>
                                     )}
-                                </div>
+                                </Box>
                             </>
                         )}
                     </ConditionalView>
                     <ConditionalView paths={["/long-investment"]}>
-                        <div className={classes.fieldWrapper}>
-                            <button className={classes.btn}>
+                        <Box className={classes.fieldWrapper}>
+                            <Button
+                                disableElevation
+                                disableRipple
+                                variant="text"
+                                sx={styles.button}
+                            >
                                 سپرده برداشت وجه
-                                <span></span>
-                            </button>
+                                <Box component="span"></Box>
+                            </Button>
                             {false && (
-                                <span className={classes.errorMessage}>
+                                <Box
+                                    component="span"
+                                    className={classes.errorMessage}
+                                >
                                     پیام تستی
-                                </span>
+                                </Box>
                             )}
-                        </div>
-                        <div className={classes.fieldWrapper}>
-                            <button className={classes.btn}>
+                        </Box>
+                        <Box className={classes.fieldWrapper}>
+                            <Button
+                                disableElevation
+                                disableRipple
+                                variant="text"
+                                sx={styles.button}
+                            >
                                 سپرده واریز سود
-                                <span></span>
-                            </button>
+                                <Box component="span"></Box>
+                            </Button>
                             {false && (
-                                <span className={classes.errorMessage}>
+                                <Box
+                                    component="span"
+                                    className={classes.errorMessage}
+                                >
                                     پیام تستی
-                                </span>
+                                </Box>
                             )}
-                        </div>
+                        </Box>
                     </ConditionalView>
-                </section>
-            </div>
-            <div className={classes.footer}>
-                <section className={classes.cardIssuanceContainer}>
-                    <ConditionalView paths={["/saving-deposit" , "/short-investment"]}>
-                        <label
-                            className={classes.checkboxLabel}
-                            htmlFor="card-issuance"
-                        >
-                            <input
-                                size="small"
-                                id="card-issuance"
-                                type="checkbox"
-                                className={classes.checkbox}
-                            />
-                            <span className={classes.checkmark}></span>
-                            درخواست صدور کارت برای این سپرده را دارم.
-                        </label>
+                </Box>
+            </Box>
+            <Box className={classes.footer}>
+                <Box
+                    component="section"
+                    className={classes.cardIssuanceContainer}
+                >
+                    <ConditionalView
+                        paths={["/saving-deposit", "/short-investment"]}
+                    >
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    id="card-issuance"
+                                    disableRipple
+                                    size="small"
+                                    sx={styles.checkbox}
+                                />
+                            }
+                            label="درخواست صدور کارت برای این سپرده را دارم."
+                            sx={styles.FormControlLabel}
+                        />
                     </ConditionalView>
-                </section>
-                <section className={classes.payment}>
-                    <button className={classes.paymentBtn}>پرداخت</button>
-                </section>
-            </div>
-        </div>
+                </Box>
+                <Box component="section" className={classes.payment}>
+                    <Button className={classes.paymentBtn}>پرداخت</Button>
+                </Box>
+            </Box>
+        </Box>
     );
 };
 

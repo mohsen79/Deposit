@@ -4,6 +4,7 @@ import { createUseStyles } from "react-jss";
 const useStyle = createUseStyles({
     container: {
         padding: "16px",
+        userSelect: "none"
     },
     // (head)
     head: {
@@ -51,6 +52,11 @@ const useStyle = createUseStyles({
     costTypography: {
         fontSize: "12px",
         color: "#989799",
+    },
+    amountWrapper: {
+        display: "flex",
+        alignItems: "center",
+        gap: "8px",
     },
     costAmount: {
         fontSize: "16px",
@@ -106,25 +112,18 @@ const useStyle = createUseStyles({
     errorMessage: {
         position: "absolute",
         right: "10px",
-        bottom: "-20px",
+        bottom: "-22px",
         fontSize: "11px",
         color: "#eb1520",
     },
     inputWrapper: {
         extend: "fieldWrapper",
     },
-    textField: {
-        extend: "btn",
-        "&::placeholder": {
-            color: "#989799",
-        },
-    },
     rial: {
         position: "absolute",
-        top: "50%",
+        top: "58%",
         transform: "translateY(-50%)",
         left: "10px",
-        color: "#1F99A7",
     },
     message: {
         extend: "errorMessage",
@@ -158,41 +157,6 @@ const useStyle = createUseStyles({
             backgroundColor: "#ccc",
         },
     },
-    checkbox: {
-        position: "absolute",
-        opacity: 0,
-        cursor: "pointer",
-        height: 0,
-        width: 0,
-        "&:checked + $checkmark": {
-            backgroundColor: "#00bba7",
-            borderRadius: 2,
-        },
-        "&:checked + $checkmark:after": {
-            display: "block",
-        },
-    },
-    checkmark: {
-        position: "absolute",
-        top: 5,
-        right: -30,
-        height: 20,
-        width: 20,
-        backgroundColor: "#eee",
-        borderRadius: 2,
-        "&:after": {
-            content: '""',
-            position: "absolute",
-            display: "none",
-            left: 7,
-            top: 4,
-            width: 3,
-            height: 8,
-            border: "solid white",
-            borderWidth: "0 3px 3px 0",
-            transform: "rotate(45deg)",
-        },
-    },
     // payment
     payment: {
         height: "42px",
@@ -209,6 +173,117 @@ const useStyle = createUseStyles({
         backgroundColor: "#0564AA",
     },
 });
+
+const styles = {
+    textField: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 10px",
+        width: "100%",
+        height: "48px",
+        backgroundColor: "inherit",
+        border: "1px solid #989799",
+        borderRadius: "12px",
+        outline: "none",
+        fontSize: "14px",
+        color: "#A9A8AA",
+        "& .MuiOutlinedInput-root": {
+            width: "100%",
+            height: "100%",
+            "& fieldset": {
+                border: "none",
+            },
+        },
+        "& input": {
+            width: "100%",
+            padding: "0",
+            color: "#989799",
+        },
+        "& input::placeholder": {
+            color: "#989799",
+            opacity: "1",
+            fontSize: "14px",
+        },
+    },
+
+    inputLabel: {
+        textAlign: "right",
+        transformOrigin: "top right",
+        color: "#989799",
+        left: "unset",
+        right: 28,
+        "&.MuiInputLabel-shrink": {
+            color: "#989799",
+            transformOrigin: "top right",
+        },
+    },
+
+    select: {
+        "& .MuiOutlinedInput-notchedOutline": {
+            textAlign: "right",
+            right: 0,
+            borderColor: "#989799",
+            borderRadius: "12px",
+        },
+        "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#989799",
+        },
+
+        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#989799",
+            borderWidth: "1px",
+        },
+        "& .MuiSelect-select": {
+            color: "#565656",
+        },
+    },
+
+    button: {
+        all: "unset",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 10px",
+        width: "100%",
+        height: "48px",
+        backgroundColor: "inherit",
+        border: "1px solid #989799",
+        borderRadius: "12px",
+        fontSize: "14px",
+        color: "#A9A8AA",
+        cursor: "pointer",
+        "&:hover": {
+            backgroundColor: "inherit",
+        },
+    },
+
+    FormControlLabel: {
+        display: "block",
+        position: "relative",
+        paddingLeft: "35px",
+        marginRight: "0px",
+        cursor: "pointer",
+        userSelect: "none",
+        "& .MuiTypography-root": {
+            fontSize: "14px",
+            color: "#565656",
+        },
+    },
+
+    checkbox: {
+        padding: "0",
+        position: "relative",
+        marginLeft: "8px",
+        color: "#565656",
+        "&.Mui-checked": {
+            color: "#00bba7",
+        },
+        "& .MuiSvgIcon-root": {
+            fontSize: 22,
+        },
+    },
+};
 
 const RegularSavingsDepositLogic = () => {
     const classes = useStyle();
@@ -247,7 +322,14 @@ const RegularSavingsDepositLogic = () => {
         },
     ];
 
-    return { classes, province, provinces, handleProvinceChange, selections };
+    return {
+        classes,
+        styles,
+        province,
+        provinces,
+        handleProvinceChange,
+        selections,
+    };
 };
 
 export default RegularSavingsDepositLogic;
