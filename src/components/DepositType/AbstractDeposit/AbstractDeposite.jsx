@@ -1,16 +1,21 @@
-import styles from "./AbstractDeposit.module.css";
+import AbstractDepositLogic from "./AbstractDepositeLogic";
+import { Box, Typography } from "@mui/material";
 
 export default function AbstractDeposit({ selected, title, description }) {
+  const { classes } = AbstractDepositLogic();
+
   return (
-    <div
+    <Box
       className={
-        selected === true ? styles.selectedContainer : styles.container
+        selected === true ? classes.selectedContainer : classes.container
       }
     >
-      <div className={selected === true ? styles.selectedTitle : styles.title}>
+      <Typography
+        className={selected === true ? classes.selectedTitle : classes.title}
+      >
         {title}
-      </div>
-      <div className={styles.description}>{description}</div>
-    </div>
+      </Typography>
+      <Typography className={classes.description}>{description}</Typography>
+    </Box>
   );
 }

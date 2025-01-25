@@ -1,13 +1,16 @@
 import BpCheckbox from "../CustomizedCheckbox/CustomizedCheckbox";
 import AbstractDeposit from "./AbstractDeposit/AbstractDeposite";
-import styles from "./DepositType.module.css";
+import RegularSavingsDepositLogic from "./DepositTypeLogic";
+import { Box, Typography, Button } from "@mui/material";
 
 const DepositType = () => {
-  return (
-    <div className={styles.container}>
-      <div className={styles.noActiveDeposit}></div>
+  const { classes } = RegularSavingsDepositLogic();
 
-      <div className={styles.abstractDepositesContainer}>
+  return (
+    <Box className={classes.container}>
+      <Box className={classes.noActiveDeposit}></Box>
+
+      <Box className={classes.abstractDepositesContainer}>
         <AbstractDeposit
           title={"سپرده قرض الحسنه عادی (دیجیتال)"}
           description={"حداقل مبلغ افتتاحیه 500،000 ریال ویژه قرعه کشی"}
@@ -28,20 +31,22 @@ const DepositType = () => {
           description={"حداقل مبلغ افتتاحیه 500،000 ریال با سود"}
           selected={false}
         ></AbstractDeposit>
-      </div>
+      </Box>
 
-      <div className={styles.stickToButtom}>
-        <div className={styles.termsAndConditionsAgreement}>
-          <div className={styles.description}>
-            <span className={styles.emphasizedPart}>قوانین و مقررات </span>
+      <Box className={classes.stickToBottom}>
+        <Box className={classes.termsAndConditionsAgreement}>
+          <Typography className={classes.description}>
+            <Typography className={classes.emphasizedPart} component="span">
+              قوانین و مقررات{" "}
+            </Typography>
             را مطالعه کردم و موافقم
-          </div>
+          </Typography>
           <BpCheckbox></BpCheckbox>
-        </div>
+        </Box>
 
-        <div className={styles.continueBtn}> ادامه </div>
-      </div>
-    </div>
+        <Box className={classes.continueBtn}> ادامه </Box>
+      </Box>
+    </Box>
   );
 };
 

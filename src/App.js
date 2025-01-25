@@ -2,14 +2,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DepositType from "./components/DepositType/DepositType";
 
 import "./App.css";
+import { ThemeProvider } from "@mui/material";
+import theme from "./theme";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<DepositType />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<DepositType />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
