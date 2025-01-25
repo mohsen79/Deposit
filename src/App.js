@@ -8,20 +8,28 @@ import Withdraw from "./components/BottomSheets/Withdraw/Withdraw";
 import Payment from "./components/BottomSheets/Payment/Payment";
 
 function App() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<DepositType />} />
-                <Route path="/branch" element={<Branch />} />
-                <Route
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<DepositType />} />
+        <Route path="/withdraw" element={<Withdraw />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/branch" element={<Branch />} />
+        <Route
                     path="/saving-deposit"
                     element={<RegularSavingsDeposit />}
                 />
-                <Route path="/withdraw" element={<Withdraw />} />
-                <Route path="/payment" element={<Payment />} />
-            </Routes>
-        </BrowserRouter>
-    );
+                <Route
+                    path="/short-investment"
+                    element={<RegularSavingsDeposit />}
+                />
+                <Route
+                    path="/long-investment"
+                    element={<RegularSavingsDeposit />}
+                />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
