@@ -1,59 +1,99 @@
 import { createUseStyles } from "react-jss";
 
-const ProfileLogic = () => {
-  document.title = "پروفایل";
-  /*---------------------- customHooks ------------------- */
-
-  /*---------------------- useContext ------------------- */
-
-  /*---------------------- css ------------------- */
-  const useStyle = createUseStyles({
-    CardTopProfile: {
-      borderRadius: " 0 0 30px 30px",
-      width: " 100% !important",
-      textAlign: "center !important",
-      height: "250px",
-      marginTop: "-28px",
-      backgroundImage:
-        "linear-gradient(to top, #003d8c, #164c9a, #265ba7, #356bb5, #437bc2)",
+const useStyle = createUseStyles({
+    textField: {
+        direction: "rtl",
+        textAlign: "right",
+        borderRadius: 12,
+        border: "none",
+        "& .MuiOutlinedInput-root": {
+            borderRadius: "12px",
+        },
+        "& .MuiInputBase-input": {
+            padding: "12px",
+        },
+        // height: "48px",
     },
-    btn: {
-      backgroundColor: theme?.pallet?.Peacock_Blue,
-      border: "none",
-      fontSize: "20px",
-      height: "48px",
-      borderRadius: "10px",
-      color: theme?.pallet?.colorWithe,
-      cursor: "pointer",
+    deposits: {
+        width: "100%",
+        // height: "156px",
+        // margin: "24px 0",
+        display: "flex",
+        flexDirection: "column",
+        gap: "12px",
+        // flexWrap: "nowrap",
     },
-    Invitedbtn: {
-      backgroundImage: theme?.pallet?.Titan,
-      border: "none",
-      fontSize: "12px",
-      padding: "4px 20px",
-      borderRadius: "10px",
-      color: theme?.pallet?.colorWithe,
-      cursor: "pointer",
+    deposit: {
+        width: "100%",
+        height: "72px",
+        borderBottom: "1px solid #D9D9D9",
+        display: "flex",
+        background: "#F8F8F8",
+        alignItems: "center",
+        borderRadius: "12px",
     },
-    InvitedbtnDis: {
-      backgroundColor: "#989898",
-      border: "none",
-      fontSize: "12px",
-      padding: "4px 20px",
-      borderRadius: "10px",
-      color: theme?.pallet?.Titan,
-      cursor: "pointer",
+    buttons: {
+        height: "92px",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        gap: "8px",
+        "& button": {
+            borderRadius: 12,
+            height: "42px",
+        },
     },
-  });
-  const classes = useStyle();
-  /*---------------------- states ------------------- */
+    container: {
+        height: "100%",
+        padding: "1rem 1rem",
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+    bankIcon: {
+        width: "31px",
+        height: "34px",
+        color: "#69BBF6",
+    },
+    depositText: {
+        width: "100%",
+        height: "100%",
+    },
+    depositTextItem: {
+        width: "100%",
+        height: "50%",
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "12px",
+        alignItems: "center",
+    },
+    rial: {
+        width: "20px",
+        height: "20px",
+    },
+    active: {
+        border: "1px solid #0564AA",
+    },
+});
 
-  /*---------------------- functions ------------------- */
+const WithdrawLogic = () => {
+    document.title = "پروفایل";
+    /*---------------------- customHooks ------------------- */
 
-  /*---------------------- UseEffect -------------------*/
+    /*---------------------- useContext ------------------- */
 
-  /*------------------------------------------------- */
-  return {};
+    /*---------------------- css ------------------- */
+    const classes = useStyle();
+    /*---------------------- states ------------------- */
+
+    /*---------------------- functions ------------------- */
+
+    /*---------------------- UseEffect -------------------*/
+
+    /*------------------------------------------------- */
+    return { classes };
 };
 
-export default ProfileLogic;
+export default WithdrawLogic;
