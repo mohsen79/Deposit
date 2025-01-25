@@ -1,19 +1,21 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DepositType from "./components/DepositType/DepositType";
-
-// import "./App.css";
-import Branch from "./components/BottomSheets/Branch/Branch";
-import RegularSavingsDeposit from "./components/RegularSavingsDeposit/RegularSavingsDeposit";
 import Withdraw from "./components/BottomSheets/Withdraw/Withdraw";
 import Payment from "./components/BottomSheets/Payment/Payment";
 import Dialogue from "./components/BottomSheets/Dialogue/Dialogue";
+import Branch from "./components/BottomSheets/Branch/Branch";
+import RegularSavingsDeposit from "./components/RegularSavingsDeposit/RegularSavingsDeposit";
+import Receipt from "./components/Receipt/Receipt";
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<DepositType />} />
+                <Route path="/withdraw" element={<Withdraw />} />
+                <Route path="/payment" element={<Payment />} />
                 <Route path="/branch" element={<Branch />} />
+                <Route path="/receipt" element={<Receipt />} />
                 <Route
                     path="/saving-deposit"
                     element={<RegularSavingsDeposit />}
@@ -21,6 +23,14 @@ function App() {
                 <Route path="/withdraw" element={<Withdraw />} />
                 <Route path="/payment" element={<Payment />} />
                 <Route path="/dialogue" element={<Dialogue />} />
+                <Route
+                    path="/short-investment"
+                    element={<RegularSavingsDeposit />}
+                />
+                <Route
+                    path="/long-investment"
+                    element={<RegularSavingsDeposit />}
+                />
             </Routes>
         </BrowserRouter>
     );
