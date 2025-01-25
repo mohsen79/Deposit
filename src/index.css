@@ -1,18 +1,13 @@
-body {
-  margin: 0;
-  font-family: 'IranSans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 @font-face {
-  font-family: 'IranSans';
-  src: url('./assets/fonts/iransans.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: "vazir";
+    src: url(./assets/fonts/Yekan.eot) format("eot"),
+        url(./assets/fonts/Yekan.woff) format("woff"),
+        url(./assets/fonts/Yekan.ttf) format("ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+    font-family: "vazir" !important;
 }
