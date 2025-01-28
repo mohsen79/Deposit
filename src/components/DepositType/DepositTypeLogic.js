@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { createUseStyles } from "react-jss";
+import { useNavigate } from "react-router-dom";
 
 const useStyle = createUseStyles({
     container: {
@@ -99,13 +101,18 @@ const styles = {
 
 const RegularSavingsDepositLogic = () => {
     const classes = useStyle();
+    const navigate = useNavigate();
     /*---------------------- states ------------------- */
+    const [title, setTitle] = useState("");
+    const [path, setPath] = useState(null);
+    const [depositType , setDepositType] = useState("");
 
     /*---------------------- functions ------------------- */
+    const navigateNextPage = () => navigate(path, { state: {title , depositType}});
 
     /*---------------------- data ------------------- */
 
-    return { classes,styles };
+    return { classes, styles, setTitle, setPath, navigateNextPage , depositType , setDepositType };
 };
 
 export default RegularSavingsDepositLogic;
