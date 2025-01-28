@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import AbstractDeposit from "./AbstractDeposit/AbstractDeposite";
 import RegularSavingsDepositLogic from "./DepositTypeLogic";
 import {
@@ -9,7 +10,15 @@ import {
 } from "@mui/material";
 
 const DepositType = () => {
-    const { classes, styles } = RegularSavingsDepositLogic();
+    const {
+        classes,
+        styles,
+        setTitle,
+        setPath,
+        navigateNextPage,
+        depositType,
+        setDepositType,
+    } = RegularSavingsDepositLogic();
 
     return (
         <Box className={classes.container}>
@@ -17,6 +26,11 @@ const DepositType = () => {
 
             <Box className={classes.abstractDepositesContainer}>
                 <AbstractDeposit
+                    path="/saving-deposit"
+                    type="/saving-deposit"
+                    setDepositType={setDepositType}
+                    setTitle={setTitle}
+                    setPath={setPath}
                     title={"سپرده قرض الحسنه عادی (دیجیتال)"}
                     description={
                         "حداقل مبلغ افتتاحیه 500،000 ریال ویژه قرعه کشی"
@@ -24,6 +38,11 @@ const DepositType = () => {
                     selected={false}
                 ></AbstractDeposit>
                 <AbstractDeposit
+                    path="/saving-deposit"
+                    type="/saving-deposit"
+                    setDepositType={setDepositType}
+                    setTitle={setTitle}
+                    setPath={setPath}
                     title={"سپرده قرض الحسنه پس انداز (دیجیتال)"}
                     description={
                         "حداقل مبلغ افتتاحیه 500،000 ریال ویژه تسهیلات"
@@ -31,6 +50,11 @@ const DepositType = () => {
                     selected={true}
                 ></AbstractDeposit>
                 <AbstractDeposit
+                    path="/long-investment"
+                    type="/long-investment"
+                    setDepositType={setDepositType}
+                    setTitle={setTitle}
+                    setPath={setPath}
                     title={"سپرده سرمایه گذاری بلند مدت"}
                     description={
                         "حداقل مبلغ افتتاحیه 10،000،000،000 ریال با سود"
@@ -38,6 +62,11 @@ const DepositType = () => {
                     selected={false}
                 ></AbstractDeposit>
                 <AbstractDeposit
+                    path="/short-investment"
+                    type="/short-investment"
+                    setDepositType={setDepositType}
+                    setTitle={setTitle}
+                    setPath={setPath}
                     title={"سپرده سرمایه گذاری کوتاه مدت"}
                     description={"حداقل مبلغ افتتاحیه 500،000 ریال با سود"}
                     selected={false}
@@ -55,7 +84,7 @@ const DepositType = () => {
                         />
                     }
                     label={
-                        <Typography component="span" sx={{ color: "#565656"}}>
+                        <Typography component="span" sx={{ color: "#565656" }}>
                             <Typography
                                 sx={{ color: "#0564AA", fontWeight: "bold" }}
                                 component="span"
@@ -68,7 +97,12 @@ const DepositType = () => {
                     sx={styles.FormControlLabel}
                 />
                 <Box component="section" className={classes.payment}>
-                    <Button className={classes.paymentBtn}>پرداخت</Button>
+                    <Button
+                        className={classes.paymentBtn}
+                        onClick={navigateNextPage}
+                    >
+                        پرداخت
+                    </Button>
                 </Box>
             </Box>
         </Box>

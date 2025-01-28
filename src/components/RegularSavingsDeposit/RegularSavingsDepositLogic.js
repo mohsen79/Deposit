@@ -3,22 +3,39 @@ import { createUseStyles } from "react-jss";
 
 const useStyle = createUseStyles({
     container: {
+        height: "100vh",
         padding: "16px",
-        userSelect: "none"
+        userSelect: "none",
+    },
+    formProvider: {
+        width: "100%",
+        height: "100%",
+    },
+    form: {
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+    },
+    top: {
+        display: "flex",
+        flexDirection: "column",
+        gap: "24px",
     },
     // (head)
     head: {
-        width: "100%",
-        height: "42px",
-        marginBottom: "12px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "12px",
     },
     // title container
     titleContainer: {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-start",
+        height: "42px",
         width: "100%",
-        height: "100%",
     },
     titleHeading: {
         fontSize: "12px",
@@ -28,11 +45,9 @@ const useStyle = createUseStyles({
     info: {
         width: "100%",
         height: "94px",
-        marginBottom: "12px",
     },
     // costs container
     costsContainer: {
-        width: "100%",
         padding: "16px",
         display: "flex",
         flexDirection: "column",
@@ -42,72 +57,21 @@ const useStyle = createUseStyles({
         borderRadius: "6px",
         backgroundColor: "#F8F8F8",
     },
-    costsSection: {
-        width: "100%",
-        height: "26px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-    },
-    costTypography: {
-        fontSize: "12px",
-        color: "#989799",
-    },
-    amountWrapper: {
-        display: "flex",
-        alignItems: "center",
-        gap: "8px",
-    },
-    costAmount: {
-        fontSize: "16px",
-        fontWeight: "bold",
-        color: "#1F99A7",
-    },
     // (body)
     body: {
         width: "100%",
-        height: "311px",
-        marginBottom: "53px",
-    },
-    // filter branches
-    filterBranches: {
-        width: "100%",
-        height: "77px",
-        marginBottom: "15px",
-        display: "flex",
-        alignItems: "flex-start",
-        gap: "8px",
-        "& .MuiSelect-icon": {
-            display: "none !important",
-        },
-    },
-    // require fields
-    requireFields: {
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        gap: "15px",
+        gap: "12px",
     },
+
+    // require fields
     fieldWrapper: {
         position: "relative",
         display: "flex",
         alignItems: "flex-end",
         width: "100%",
         height: "56px",
-    },
-    btn: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "0 10px",
-        width: "100%",
-        height: "48px",
-        backgroundColor: "inherit",
-        border: "1px solid #989799",
-        borderRadius: "12px",
-        outline: "none",
-        fontSize: "14px",
-        color: "#A9A8AA",
     },
     errorMessage: {
         position: "absolute",
@@ -116,21 +80,33 @@ const useStyle = createUseStyles({
         fontSize: "11px",
         color: "#eb1520",
     },
+    textField: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        justifyContent: "flex-end",
+        width: "100%",
+        height: "77px",
+    },
     inputWrapper: {
-        extend: "fieldWrapper",
+        width: "100%",
+        position: "relative",
     },
     rial: {
         position: "absolute",
-        top: "58%",
+        top: "50%",
         transform: "translateY(-50%)",
         left: "10px",
     },
+    messageContainer: {
+        padding: "2px 12px",
+    },
     message: {
-        extend: "errorMessage",
+        fontSize: "11px",
         color: "#989799",
     },
     // (footer)
-    footer: {
+    bottom: {
         display: "flex",
         flexDirection: "column",
         gap: "12px",
